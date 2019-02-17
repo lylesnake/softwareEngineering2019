@@ -1,11 +1,8 @@
-import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileNotFoundException;
-import java.io.FileReader;
-import java.io.IOException;
 import java.io.PrintWriter;
 
-public class main {
+public class TravellingSalesmanProblem {
 
 	public static void main(String[] args) {
 		// set up our variables.
@@ -33,10 +30,7 @@ public class main {
 		System.out.print("Best path: "); //print best path directions
 		printPathArray(bestPathArray); 
 		printToCSVFile(distanceMatrix, cityCount); //6: print to CSV
-		readFromCSVfile();
-		
-		
-		
+
 	} //end main
 
 
@@ -168,40 +162,4 @@ public class main {
 			System.out.println(e.getMessage());
 		}		
 	}//end
-	
-	private static void readFromCSVfile() {
-		String csvFile = "/Users/Lyle/Desktop/TSPtoCSV_lyle_readTest.csv";
-		BufferedReader br = null;
-		String line = "";
-		String cvsSplitBy = ",";
-
-		try {
-
-			br = new BufferedReader(new FileReader(csvFile));
-			while ((line = br.readLine()) != null) {
-
-				String[] newMatrix = line.split(cvsSplitBy);
-
-				for (int counter = 0; counter < newMatrix.length; counter++){
-					System.out.println(newMatrix[counter]);
-					
-				}
-			}System.out.println("Read");
-
-		} catch (FileNotFoundException e) {
-			e.printStackTrace();
-		} catch (IOException e) {
-			e.printStackTrace();
-		} finally {
-			if (br != null) {
-				try {
-					br.close();
-				} catch (IOException e) {
-					e.printStackTrace();
-				}
-			}
-		}
-		
-	}
-	
 }
